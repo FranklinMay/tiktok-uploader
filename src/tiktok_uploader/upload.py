@@ -178,11 +178,16 @@ def complete_upload_form(driver, path: str, description: str, schedule: datetime
         The path to the video to upload
     """
     _go_to_upload(driver)
+    time.sleep(config['implicit_wait'])
     #  _remove_cookies_window(driver)
     _set_video(driver, path=path, **kwargs)
+    time.sleep(config['implicit_wait'])
     _remove_split_window(driver)
+    time.sleep(config['implicit_wait'])
     _set_interactivity(driver, **kwargs)
+    time.sleep(config['implicit_wait'])
     _set_description(driver, description)
+    time.sleep(config['implicit_wait'])
     if schedule:
         _set_schedule_video(driver, schedule)
     _post_video(driver)
